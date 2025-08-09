@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter For YOU</title>
+  <link rel="stylesheet" href="./css/css2.css">
+</head>
+
+<body class="Page2">
+  <div class="container">
+    <h1>Click The Mails</h1>
+
+    <div class="icon-grid">
+      <img src="./css/image/birthday-invitation_6691225.png" alt="Icon 1" data-popup="./css/image/Scroll1.png">
+      <img src="./css/image/letter_11697523.png" alt="Icon 2" data-popup="./css/image/Scroll2.png">
+      <img src="./css/image/smile-wink_7707005.png" alt="Icon 3" data-popup="./css/image/Scroll3.png">
+      <img src="./css/image/winking_7707019.png" alt="Icon 4" data-popup="./css/image/Scroll4.png">
+      <img src="./css/image/winking_7707019.png" alt="Icon 5" data-popup="./css/image/Scroll5.png">
+      <img src="./css/image/birthday-invitation_6691225.png" alt="Icon 6" data-popup="./css/image/Scroll6.png">
+    </div>
+  </div>
+
+  <!-- Popup container (hidden by default) -->
+  <div class="popup-container" id="popup">
+    <button id="close-popup" class="close-btn">X</button>
+    <img id="popup-img" src="" alt="popup image">
+  </div>
+
+  <!-- Audio element -->
+  <audio id="bg-music" src="./audio/MORELL - MU KADE.mp3"></audio>
+
+  <!-- JS -->
+  <script>
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img');
+    const closeBtn = document.getElementById('close-popup');
+    const icons = document.querySelectorAll('.icon-grid img');
+    const bgMusic = document.getElementById('bg-music');
+
+    let musicStarted = false;
+    bgMusic.loop = false;
+
+    icons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        // Show the popup with the right image
+        const popupImage = icon.getAttribute('data-popup');
+        popupImg.src = popupImage;
+        popup.classList.add('active');
+
+        // Start music only once
+        if (!musicStarted) {
+          bgMusic.play().catch(err => console.log(err));
+          musicStarted = true;
+        }
+      });
+    });
+
+    // Close popup
+    closeBtn.addEventListener('click', () => {
+      popup.classList.remove('active');
+    });
+  </script>
+</body>
+
+</html>

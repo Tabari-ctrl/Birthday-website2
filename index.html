@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Website</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="Bday">
+
+    <div class="Wapper">
+        <div class="header">
+            <h1>HAPPY BIRTHDAY <a href="./audioPage.html" style="text-decoration: none; color: inherit;">Hawwah</a></h1>
+        </div>
+        <div class="cakeWapper">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div>
+      <button  id="wish">Make a Wish</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+  document.getElementById("wish").addEventListener("click", function(e) {
+    e.preventDefault(); // Stop immediate page load
+    
+    // Play confetti for 2 seconds
+    var duration = 2 * 1000;
+    var end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      } else {
+        // AFTER confetti finishes, load next page
+        window.location.href = "Bday2.html";
+      }
+    }());
+  });
+</script>
+
+</body>
+
+</html>
